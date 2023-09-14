@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="quiz-container">
+    <div id="timer-container" class="hidden">
+        <span class="timer-label"><h3>Time Remaining:</h3></span>
+        <div class="timer" id="timer">60:00</div>
+    </div>
+    <h1>Quiz App</h1>
+    <div id="instructions">
+      <!-- You can add your instructions here -->
+      <p>Welcome to the quiz! Read the questions and select the correct answers.</p>
+    </div>
+    <button id="start-quiz-btn">Start Quiz</button>
+    <div id="quiz"></div>
+    <button id="submit-btn" class="hidden">Submit</button>
+    
+  </div>
+  <div id="result-container" class="hidden">
+    <h2>Your Score: <span id="score"></span></h2>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
