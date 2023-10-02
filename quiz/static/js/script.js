@@ -45,7 +45,7 @@ const quizQuestions = [
 // Global Variables
 let score = 0; // for personal scores
 let timer;
-let seconds = 5; // 1 hour timer 
+let seconds = 3600; // 1 hour timer
 let endMessageDisplayed = false;
 
 // Display the quiz questions

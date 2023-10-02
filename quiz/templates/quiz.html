@@ -1,0 +1,32 @@
+{%extends 'index.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{%static 'css/quiz.css'%}">
+{%endblock css%}
+
+{%block title%}Quiz{%endblock title%}
+
+{%block extra%}
+  <div class="quiz">
+    <div id="quiz-container" class="">
+      <div id="timer-container" class="hidden ">
+          <span class="timer-label"><h3>Time Remaining:</h3></span>
+          <div class="timer" id="timer">60:00</div>
+      </div>
+      <h1 id="quiz-title">Quiz App</h1>
+      <div id="instructions">
+        <p>Welcome to the quiz! Read the questions and select the correct answers.</p>
+      </div>
+      <button id="start-quiz-btn" class="btn">Start Quiz</button>
+      <div id="quiz"></div>
+      <button id="submit-btn" class="hidden btn">Submit</button>
+    </div>
+    <div id="result-container" class="hidden">
+      <div class="result-container-text">
+          <h2>Your Score: <span id="score"></span></h2>
+      </div>
+    </div>
+  </div>
+{%endblock extra%}
+
+{%block js%} <script src="../static/js/script.js"></script>{%endblock js%}

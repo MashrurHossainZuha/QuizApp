@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
-    <title>Base Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<!--    for extra css unique to individual page -->
+    {%block css%}{%endblock css%}
+
+    <title>{%block title%}Home Page{%endblock title%}</title>
 </head>
 <body>
     <header>
@@ -18,21 +22,20 @@
                 letter-spacing: 3px;">Sulphuric Bench</p>
             </div>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="quiz.html">Quiz</a>
-                <a href="#">Leaderboard</a>
+                <a href="{%url 'homePage'%}">Home</a>
+
+                <a href="{%url 'quizPage'%}">Quiz</a>
+                <a href="{%url 'leaderboard'%}">Leaderboard</a>
                 <!-- <button type="button" class="btn-login">Login</button> -->
             </div>
         </nav>
     </header>
-    <div class="main-section">
 
-    </div>
-    <footer style="position: absolute; 
-            bottom: 0;">
+    {%block extra%}{%endblock extra%}
+    <footer style="">
         <div class="column1">
             <div class="logocontainer">
-                <img class="logopic" src="img/SB Logo.png" alt="Sulphuric Bench Logo">
+                <img class="logopic" src="../static/img/SB%20Logo.png" alt="Sulphuric Bench Logo">
                 <div class="logowrites">
                     <p class="sulphuricbench">Sulphuric Bench</p>
                     <!-- <p class="coordinatorcampaign">Coordinator Campaign</p> -->
@@ -40,7 +43,7 @@
             </div>
             <div class="contactcontainer">
                 <h2 class="contact">Contact Us</h2>
-                
+
                 <p class="contactp">
                     <i class="fa-solid fa-phone"></i>
                     <span>+8801741295738</span>
@@ -49,7 +52,7 @@
                     <i class="fa-solid fa-envelope"></i>
                     <span>sulphuric.bench@gmail.com</span>
                 </p>
-                
+
                 <p class="contactp">
                     <i class="fa-solid fa-location-dot" style="height: 16px; width: 16px;"></i>
                     <span>Dhaka, Bangladesh</span>
@@ -95,5 +98,7 @@
             <p class="cpyright"><a href="https://facebook.com/sulphuric.bench" target="_blank">Sulphuric Bench</a> | &copy; 2023 All rights reserved.</p>
         </div>
     </footer>
+
+    {%block js%}{%endblock js%}
 </body>
 </html>
