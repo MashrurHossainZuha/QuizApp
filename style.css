@@ -1,127 +1,224 @@
-/* Reset some default styles */
-body {
-  font-family: Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+* {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
-}
-/* Timer style */
-
-#timer-container {
-  text-align: center;
+  /* background: #182930; */
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
-.timer-label {
-  font-size: 25px;
-  color: #333;
+
+body {
+  background-color: #294652;
+  /* color:#182930 */
 }
 
-.timer{
-  font-size: 36px;
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Footer Style  */
+footer {
+  /* position: relative;
+  bottom: 0;
+  left: 0; */
+  border-top: 2px solid #53DEFD;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #182930;
+  padding: 30px 50px;
+}
+
+.column1{
+  margin-right: 30px;
+}
+
+@media (max-width: 720px) {
+  footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .column1 {
+    margin-bottom: 50px;
+    /* font-size: .95rem; */
+  }
+}
+
+.sulphuricbench{
+  font-family: "Bebas Neue";
+  letter-spacing: 2px;
+}
+
+.logocontainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  color: #53DEFD;
+  /* margin-bottom: 25px; */
+  padding-bottom: 20px;
+  user-select: none;
+}
+
+.logopic {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  user-select: none;
   
-  padding: 10px; 
 }
-/* Center the main content */
-#quiz-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+@media (max-width: 635px) {
+  .logopic {
+    width: 80px;
+    height: 80px;
+  }
 }
 
-/* Header styles */
-h1{
-  text-align: center;
-  color: #333;
+.sulphuricbench {
+  font-size: 2.5em;
+}
+@media (max-width: 1080px) {
+  .sulphuricbench {
+    font-size: 2em;
+  }
 }
 
-/* Instructions styles */
-#instructions {
-  text-align: center;
-  margin-bottom: 20px;
+.contact, .contactp {
+  color: #53DEFD;
+  margin-bottom: 15px;
 }
 
-/* Start Quiz button styles */
-#start-quiz-btn {
-  display: block;
-  margin: 0 auto;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+.contactp span{
+  margin-left: 10px;
+  color: white;
 }
 
-#submit-btn {
-  /* display: hidden; */
-  margin: 20px auto; /* Add space around the button */
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+.contactp i{
+  color:#53DEFD;
 }
 
-#submit-btn:hover {
-  background-color: #0056b3;
+.footerlist a{
+  color: #53DEFD;
 }
 
-#start-quiz-btn:hover {
-  background-color: #0056b3;
+.footer {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-top: 30px;
 }
-/* CSS to hide elements with the "hidden" class */
+
+.footerlist {
+  margin-right: 20px;
+}
+
+.column2 {
+  width: 70%;
+  color:#53DEFD;
+}
+
+@media (max-width: 720px) {
+  .column2 {
+    width: 90%;
+    text-align: center;
+  }
+}
 .hidden {
   display: none;
 }
 
 
-.question-container {
+@media (max-width: 320px) {
+  .column2 {
+    display: none;
+  }
+}
+.column2 h2 {
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+}
+.column2 p{
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+.cpyright {
+  font-size: .95rem;
+}
+.cpyright a {
+  color:#53DEFD;
+  text-decoration: none;
+}
+
+.contactcontainer h2{
+  font-weight: 900;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Navbar Styling */
+
+nav{
+  height: 100px;
+  background-color: #182930;
+  border-bottom: 1px solid #53DEFD;
+  /* position: fixed;
+  top:0;
+  left:0; */
+  width: 100%;
+  padding: 60px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+
+.nav-logo{
+  display: flex;
+  align-items: center;
+}
+.nav-logo p{
+  color: white;
+  margin-left: 10px;
+}
+
+.nav-logo-pic {
+  background-image: url(img/SB\ Logo.png);
+  height: 80px;
+  width: 80px;
+  background-size: cover;
+  user-select: none;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-left: 40px;
+}
+
+.navbar a:hover{
+  font-size: 1.4rem;
+  opacity: .95;
+}
+
+
+.btn-login{
+  width: 100px;
+  height: 50px;
+  background:transparent;
+  color:white;
+  border: 2px solid #53DEFD;
+  outline: none;
   border-radius: 5px;
-  padding: 10px;
-  background-color: #fff;
+  margin-left: 40px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  box-shadow: 2px 3px 3px #53DEFD;
 }
 
-/* Style for the result container */
-#result-container {
-  text-align: center;
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 60vh; /* Set a fixed width */
-  height: 20vh; /* Set a fixed height */
-  margin: 0 auto; /* Center the container horizontally */
-}
-#result-container h2 {
-  color: #333;
-  font-size: 24px;
-}
-
-#score {
-  color: #007bff; /* Score color */
-  font-size: 36px;
-  font-weight: bold;
-}
-
-/* Center the score text */
-#score {
-  display: inline-block;
-  margin-top: 10px;
-}
-
-
-/* Style for the end message */
-#end-message {
-  font-size: 18px;
-  color: #555;
-  margin-top: 20px;
+.btn-login:hover{
+  font-size: 1.4rem;
+  box-shadow: 4px 5px 5px #53DEFD;
 }

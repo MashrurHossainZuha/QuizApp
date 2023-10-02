@@ -13,26 +13,60 @@ const quizQuestions = [
   {
     question: "Which planet is known as the Red Planet?",
     options: ["Mars", "Venus", "Jupiter", "Mercury"],
-    answer: "Mars"
+    answer: "Jupiter"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    answer: "Jupiter"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    answer: "Jupiter"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    answer: "Jupiter"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    answer: "Jupiter"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    answer: "Jupiter"
   }
 ];
 
-let score = 0;
+// Global Variables
+let score = 0; // for personal scores
+let timer;
+let seconds = 5; // 1 hour timer 
+let endMessageDisplayed = false;
 
 // Display the quiz questions
 function displayQuiz() {
-
+  
   const instructionsContainer = document.getElementById("instructions");
   instructionsContainer.style.display = "none";
 
   const startQuizBtn = document.getElementById("start-quiz-btn");
   startQuizBtn.style.display = "none";
 
+  document.getElementById('quiz-title').style.display = 'none';
   const quizContainer = document.getElementById("timer-container");
   quizContainer.style.display = "block";
-
+  quizContainer.classList.remove('hidden');
   const timerContainer = document.getElementById("quiz-container");
+  // Adding Style
+  timerContainer.style.backgroundColor = '#294652';
+  timerContainer.style.border = 'none';
   timerContainer.style.display = "block";
+
   // Show the submit button
   const submitBtn = document.getElementById("submit-btn");
   submitBtn.classList.remove("hidden");
@@ -42,31 +76,33 @@ function displayQuiz() {
 
   // updating the timer
   const timerElement = document.getElementById("timer");
-    let seconds = 3600; // 1 hour timer 
+  
 
-    function updateTimer() {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        timerElement.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  function updateTimer() {
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+      timerElement.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 
-        if (seconds <= 0) {
-            clearInterval(interval); // stops calling the function
-            timerElement.textContent = "Time up!";
-        }
+      if (seconds <= 0) {
+          clearInterval(interval); // stops calling the function
+          timerElement.textContent = "Time up!";
+      }
 
-        seconds--;
-    }
+      seconds--;
+  }
 
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000); // 1000ms = 1 second interval 
-    // calls the function update func at every interval
+  updateTimer();
+  // calls the function update func at every interval
+  const interval = setInterval(updateTimer, 1000); // 1000ms = 1 second interval 
 
+  // Generating Each Questiosn
   for (let i = 0; i < quizQuestions.length; i++) {
     const questionContainer = document.createElement("div");
     questionContainer.classList.add("question-container");
 
     const question = document.createElement("p");
-    question.textContent = quizQuestions[i].question;
+    question.classList.add("question");
+    question.textContent = (i+1) + '. ' + quizQuestions[i].question;
     questionContainer.appendChild(question);
 
     const options = quizQuestions[i].options;
@@ -90,7 +126,7 @@ function displayQuiz() {
 
 // Handle the submission of the quiz
 function submitQuiz() {
-  console.log("Submit button clicked."); //
+  // console.log("Submit button clicked."); 
   const questionContainers = document.getElementsByClassName("question-container");
   let userAnswers = [];
 
@@ -104,6 +140,7 @@ function submitQuiz() {
   }
 
   score = calculateScore(userAnswers);
+  clearTimeout(timer);
   showResult();
 }
 
@@ -122,27 +159,32 @@ function calculateScore(userAnswers) {
 
 // Display the quiz result
 function showResult() {
-  console.log("Showing result.");
-  console.log(score)
+  // console.log("Showing result.");
+  // console.log(score) // showing score
   const quizContainer = document.getElementById("quiz-container");
   quizContainer.style.display = "none";
 
   const resultContainer = document.getElementById("result-container");
-  resultContainer.style.display = "block";
+  resultContainer.classList.remove('hidden')
+  resultContainer.style.display = "flex";
 
   const scoreElement = document.getElementById("score");
   scoreElement.textContent = score + " / " + quizQuestions.length;
-  // Create an element for the end message
-  const endMessage = document.createElement("p");
-  endMessage.textContent = "Thanks for participating!";
-  endMessage.id = "end-message"; // Add an ID for styling
-
-  // Append the end message to the result container
-  resultContainer.appendChild(endMessage);
+  document.getElementById('submit-btn').click();
 }
 
 // Add event listener to the start quiz button
-document.getElementById("start-quiz-btn").addEventListener("click", displayQuiz);
+// document.getElementById("start-quiz-btn").addEventListener("click", displayQuiz);
+
+document.getElementById("start-quiz-btn").addEventListener("click", function () {
+  displayQuiz();
+  
+  // Start a 5-minute (300,000 milliseconds) timer when the quiz begins
+  timer = setTimeout(function () {
+    showResult(); // Automatically submit the quiz when the timer ends
+  }, seconds * 1000);
+});
+
 
 document.getElementById("submit-btn").addEventListener("click", function(event) {
   event.preventDefault(); // Prevent page reload
