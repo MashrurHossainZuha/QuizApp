@@ -5,7 +5,6 @@
 {%endblock css%}
 
 {%block title%}Quiz{%endblock title%}
-
 {%block extra%}
   <div class="quiz">
     <div id="quiz-container" class="">
@@ -13,11 +12,9 @@
           <span class="timer-label"><h3>Time Remaining:</h3></span>
           <div class="timer" id="timer">60:00</div>
       </div>
-      <h1 id="quiz-title">Personal Info Form</h1>
-      <!-- Personal Info Form here -->
-      <!-- Load with django -->
+      <h1 id="quiz-title"></h1>
       <div id="instructions">
-        <p>Welcome to the quiz! Read the questions and select the correct answers.</p>
+        <!-- <p>Welcome to the quiz! Read the questions and select the correct answers.</p> -->
       </div>
       <button id="start-quiz-btn" class="btn">Take Quiz</button>
       <div id="quiz"></div>
@@ -30,5 +27,6 @@
     </div>
   </div>
 {%endblock extra%}
+
 
 {%block js%} <script src="../static/js/script.js"></script>{%endblock js%}

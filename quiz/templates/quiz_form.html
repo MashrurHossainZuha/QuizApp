@@ -1,0 +1,26 @@
+{%extends 'index.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{%static 'css/quiz.css'%}">
+{%endblock css%}
+
+{%block title%}Quiz{%endblock title%}
+
+{%block extra%}
+  <div class="quiz">
+    <div id="quiz-container" class="">
+      <h1 id="quiz-title">Personal Info Form</h1>
+      <!-- Personal Info Form here -->
+      <form method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit" class="btn">Take Quiz</button>
+      </form>
+      <!-- Load with django -->
+      
+    </div>
+
+  </div>
+{%endblock extra%}
+
+{%block js%} <script src="../static/js/script.js"></script>{%endblock js%}
