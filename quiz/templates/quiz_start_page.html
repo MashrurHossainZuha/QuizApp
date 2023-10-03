@@ -1,0 +1,32 @@
+{%extends 'index.html'%}
+{%load static%}
+{%block css%}
+<!--page specific Css here-->
+<link rel="stylesheet" href="{%static 'css/quiz_start.css'%}">
+{%endblock css%}
+
+{%block title%}Quiz{%endblock title%}
+
+{%block extra%}
+<!--Page specific Code here-->
+<div class="quiz-start-container">
+    <div class="quiz">
+        <h1 class="quiz-title">Quiz App</h1>
+        <p class="quiz-instructions">Welcome to the quiz! Read the questions and select the correct answers.</p>
+        <button id='start-btn' type="button" class="start-btn btn">Start Quiz</button>
+    </div>
+</div>
+{%endblock extra%}
+
+{%block js%}
+<!--Page Specfic Js-->
+
+<script>
+    document.getElementById("start-btn").addEventListener("click", function() {  
+        const url = "{% url 'quiz' %}"; 
+        //const url = 'quiz_start_page.html';
+        window.location.href = url;
+    });
+</script>
+
+{%endblock js%}

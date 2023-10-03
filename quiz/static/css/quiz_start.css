@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  /* background: #182930; */
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.quiz-start-container {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+.quiz{
+    width: 70%;
+    min-height: 600px;
+  /* margin: 0 auto; */
+    padding: 20px;
+    background-color: #1829306e;
+    border: 1px solid #53DEFD;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: none;
+}
+
+.quiz-title{
+  color: #53DEFD;
+}
+
+.quiz-instructions {
+  color: white;
+  margin: 20px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #53DEFD;
+  color: #182930;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}

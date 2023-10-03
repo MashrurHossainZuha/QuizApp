@@ -10,5 +10,9 @@ def quizPage(request):
     return render(request, 'quiz.html')
 
 
+def quiz_start_page(request):
+    return render(request, 'quiz_start_page.html')
+
+
 def leaderboardPage(request):
     return render(request, 'leaderboard.html')
