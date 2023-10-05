@@ -6,27 +6,78 @@
 
 {%block title%}Quiz{%endblock title%}
 {%block extra%}
-  <div class="quiz">
+<div class="quiz">
     <div id="quiz-container" class="">
-      <div id="timer-container" class="hidden ">
-          <span class="timer-label"><h3>Time Remaining:</h3></span>
-          <div class="timer" id="timer">60:00</div>
-      </div>
-      <h1 id="quiz-title"></h1>
-      <div id="instructions">
-        <!-- <p>Welcome to the quiz! Read the questions and select the correct answers.</p> -->
-      </div>
-      <button id="start-quiz-btn" class="btn">Take Quiz</button>
-      <div id="quiz"></div>
-      <button id="submit-btn" class="hidden btn">Submit</button>
+        <div id="timer-container" class="hidden ">
+            <span class="timer-label"><h3>Time Remaining:</h3></span>
+            <div class="timer" id="timer">60:00</div>
+        </div>
+        <h1 id="quiz-title"></h1>
+        <div id="instructions">
+            <!-- <p>Welcome to the quiz! Read the questions and select the correct answers.</p> -->
+        </div>
+        <button id="start-quiz-btn" class="btn">Take Quiz</button>
+        <div id="quiz"></div>
+        <form id="quiz-form">
+            {% csrf_token %}
+            <!-- Other form fields and elements here -->
+            <!-- Include a submit button to submit the form -->
+<!--            <button type="button" onclick="submitQuiz()">Submit Quiz</button>-->
+            <button id="submit-btn" type="button" class="hidden btn" onclick="Submit()">Submit</button>
+        </form>
+
+
     </div>
     <div id="result-container" class="hidden">
-      <div class="result-container-text">
-          <h2>Your Score: <span id="score"></span></h2>
-      </div>
+        <div class="result-container-text">
+            <h2>Your Score: <span id="score"></span></h2>
+        </div>
     </div>
-  </div>
+</div>
 {%endblock extra%}
 
 
-{%block js%} <script src="../static/js/script.js"></script>{%endblock js%}
+{%block js%}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../static/js/script.js"></script>
+<script>
+    var csrfToken = '{% csrf_token %}';
+    function saveScore(score, participantId, csrfToken) {
+        $.ajax({
+            url: `/quiz/save_score/${participantId}/`, // Update the URL as needed
+            type: 'POST',
+            data: { score: score },
+            dataType: 'json',
+            headers: {
+                'X-CSRFToken': csrfToken  // Include the CSRF token in the headers
+            },
+            success: function(data) {
+                console.log('Score saved successfully');
+                window.location.href = '{%url 'quiz_end'%}';
+                // Redirect or perform any other action as needed
+            },
+            error: function(error) {
+                console.error('Error saving score:', error);
+            }
+        });
+    }
+    function Submit() {
+        document.getElementById("submit-btn").disabled = true;
+        submitQuiz();
+
+        console.log(score);
+
+        var participantId = '{{ participant_id }}';
+
+//        console.log(participantId);
+        var csrfToken = '{{ csrf_token }}';
+//        console.log(csrfToken);
+        //        console.log({{participant.name}});
+        //        console.log({{participant.email}});
+        //        console.log({{participant.mobile}});
+        saveScore(score, participantId, csrfToken);
+    }
+</script>
+
+
+{%endblock js%}

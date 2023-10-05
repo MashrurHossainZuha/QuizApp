@@ -14,39 +14,14 @@ const quizQuestions = [
         question: "Which planet is known as the Red Planet?",
         options: ["Mars", "Venus", "Jupiter", "Mercury"],
         answer: "Jupiter"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Mars", "Venus", "Jupiter", "Mercury"],
-        answer: "Jupiter"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Mars", "Venus", "Jupiter", "Mercury"],
-        answer: "Jupiter"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Mars", "Venus", "Jupiter", "Mercury"],
-        answer: "Jupiter"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Mars", "Venus", "Jupiter", "Mercury"],
-        answer: "Jupiter"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Mars", "Venus", "Jupiter", "Mercury"],
-        answer: "Jupiter"
     }
 ];
 
 // Global Variables
 let score = 0; // for personal scores
 let timer;
-let seconds = 5; // 1 hour timer
-let submitClicked = false;
+let seconds = 15; // 1 hour timer
+
 
 // Display the quiz questions
 function displayQuiz() {
@@ -141,7 +116,6 @@ function submitQuiz() {
 
     score = calculateScore(userAnswers);
     clearTimeout(timer);
-    showResult();
 }
 
 // Calculate the score
@@ -153,48 +127,26 @@ function calculateScore(userAnswers) {
             score++;
         }
     }
-
-    // storing in session storage for django to access it
-    sessionStorage.setItem('quiz_score', score);
     return score;
-
 }
 
 
 
 // Display the quiz result
 
-function showResult() {
-
-    if(submitClicked === false){
-        submitClicked = true;
-        document.getElementById('submit-btn').click();
-    };
-    console.log(score);
-    // Send the score to the server
-
-}
-
 
 var autoClickbtn = document.getElementById('start-quiz-btn');
 document.addEventListener('DOMContentLoaded', function(){
-//    console.log('hehe');
+
     autoClickbtn.click();
 });
 
 document.getElementById("start-quiz-btn").addEventListener("click", function () {
     displayQuiz();
-//    console.log('inside start quiz button');
+
 
     timer = setTimeout(function () {
-        showResult(); // Automatically submit the quiz when the timer ends
+        document.getElementById('submit-btn').click(); // Automatically submit the quiz when the timer ends
     }, seconds * 1000);
 });
 
-
-document.getElementById("submit-btn").addEventListener("click", function(event) {
-    document.getElementById("submit-btn").disabled = true;
-    event.preventDefault();
-    submitClicked = true;// Prevent page reload
-    submitQuiz();
-});
